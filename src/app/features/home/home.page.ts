@@ -9,6 +9,8 @@ import {
   IonButtons,
   IonMenuButton
 } from '@ionic/angular/standalone';
+
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -22,7 +24,7 @@ imports: [
   IonButtons,
   IonMenuButton,
   CommonModule,
-  FormsModule
+  FormsModule,
 ]
 })
 export class HomePage implements OnInit {
