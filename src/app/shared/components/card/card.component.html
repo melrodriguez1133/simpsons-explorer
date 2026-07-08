@@ -1,0 +1,15 @@
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ title |uppercase}}</ion-card-title>
+    <ion-card-subtitle>{{ subtitle }}</ion-card-subtitle>
+  </ion-card-header>
+<ion-img src="https://m.media-amazon.com/images/S/pv-target-images/6a1b7cf73c07ea49ed2736bcf93e83a9faba3eb055b641c6c60705034028f123._SX1080_FMjpg_.jpg"></ion-img>
+  <ion-card-content>
+   Edad: {{age}} años
+   <br>
+    {{ "First appeared on: " + (date | date) }}
+    <BR>
+    {{ description }}
+  </ion-card-content>
+</ion-card>

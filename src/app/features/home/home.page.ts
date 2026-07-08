@@ -9,9 +9,9 @@ import {
   IonButtons,
   IonMenuButton
 } from '@ionic/angular/standalone';
-
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
-@Component({
+import { CardComponent } from 'src/app/shared/components/card/card.component';
+ @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
@@ -25,6 +25,8 @@ imports: [
   IonMenuButton,
   CommonModule,
   FormsModule,
+  HeaderComponent,
+  CardComponent
 ]
 })
 export class HomePage implements OnInit {
