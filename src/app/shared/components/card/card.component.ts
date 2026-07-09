@@ -10,16 +10,16 @@ import { calculateAge } from '../../utils/age.util';
   imports: [IonCard, IonImg, IonTitle, IonCardHeader, IonCardSubtitle, IonCardContent,IonCardTitle,UppercasePipe, DatePipe],
 })
 export class CardComponent  implements OnInit {
-age: number = 0;
 
   @Input() title: string = "";
   @Input() subtitle: string = "";
   @Input() description: string = "";
-  @Input() date: Date = new Date('1987-04-19');
+  @Input() imageUrl: string = "";
+  @Input() age:number = 0;
+  @Input() date: string = "";
   constructor() { }
 
   ngOnInit() {
-    this.age = calculateAge(this.date);
   }
 
 }

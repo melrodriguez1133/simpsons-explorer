@@ -5,8 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DatePipe implements PipeTransform {
 
-  transform(date: Date): String {
-    return date.toLocaleDateString();
+  transform(date: string | null): String {
+    if (!date) {
+      return 'No disponible';
+    }
+    return new Date(date).toLocaleDateString();
   }
 
 }
