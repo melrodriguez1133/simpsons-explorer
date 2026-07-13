@@ -1,0 +1,88 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.simpsons-card {
+  height: 100%;
+  min-height: 410px;
+  margin: 0;
+
+  display: grid;
+  grid-template-rows: 115px 230px 70px;
+
+  background: #fff176;
+  border: 4px solid #111;
+  border-radius: 12px;
+  overflow: hidden;
+
+  box-shadow: 8px 8px 0 #111;
+  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+}
+
+.simpsons-card ion-card-header {
+  background: #4bb6f2;
+  border-bottom: 4px solid #111;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.simpsons-card ion-card-title {
+  color: #111;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.05;
+  text-shadow: 2px 2px 0 #fff;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.simpsons-card ion-card-subtitle {
+  margin-top: 8px;
+  color: #111;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.simpsons-img {
+  width: 100%;
+  height: 230px;
+  background: #88d3ea;
+  border-bottom: 4px solid #111;
+}
+
+.simpsons-img::part(image) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.simpsons-card ion-card-content {
+  background: #fff176;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  padding: 14px 16px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Cuando no hay description, elimina el espacio extra */
+.simpsons-card ion-card-content:empty {
+  display: none;
+}

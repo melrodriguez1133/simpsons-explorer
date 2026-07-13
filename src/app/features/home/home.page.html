@@ -1,36 +1,113 @@
 <app-header title="Home"></app-header>
 
-<ion-content class="ion-padding">
-   <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-md="6" *ngFor="let character of Characters"> 
-        <app-card 
-          [title]="character.name" 
-          [subtitle]="character.occupation" 
-          [description]="character.gender"
-          [imageUrl]=" IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + character.portrait_path">
-        </app-card>     
-    </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4" size-md="2" *ngFor="let location of Locations"> 
-        <app-card 
-          [title]="location.name" 
-          [subtitle]="location.town " 
-          [imageUrl]=" IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + location.image_path">
-        </app-card>
-      </ion-col>    
-    </ion-row>
-    <ion-row>
+<ion-content class="app-background home-page">
+  <div class="page-shell">
 
-      <ion-col size="12" size-md="6" *ngFor="let episode of Episodes"> 
-        <app-card 
-          [title]="episode.name" 
-          [subtitle]="episode.season + ' - ' + episode.episode_number" 
-          [description]="episode.synopsis"
-          [imageUrl]=" IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + episode.image_path">
-        </app-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-    </ion-content> 
+    <section class="hero-panel">
+      <p class="eyebrow">WELCOME</p>
+      <h1>Springfield Explorer</h1>
+      <p>
+        Explora personajes, episodios y lugares clásicos del universo de Los Simpsons.
+      </p>
+    </section>
+
+    <section class="content-panel">
+      <div class="section-heading">
+        <div>
+          <p>CAST</p>
+          <h2>Featured Characters</h2>
+        </div>
+
+        <ion-button routerLink="/main/characters">
+          Ver más
+        </ion-button>
+      </div>
+
+      <div class="character-carousel">
+        <article class="character-card" *ngFor="let character of Characters">
+          <div class="character-image">
+            <img
+              [src]="IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + character.portrait_path"
+              [alt]="character.name">
+
+            <button class="favorite-btn" type="button">
+              ♡
+            </button>
+          </div>
+
+          <div class="character-info">
+            <h3>{{ character.name }}</h3>
+            <p>{{ character.occupation || 'Unknown' }}</p>
+            <span>{{ character.gender || 'Unknown' }}</span>
+
+            <button
+              type="button"
+              class="details-btn"
+              [routerLink]="['/main/characters', character.id]">
+              View Details
+              <strong>→</strong>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-panel">
+      <div class="section-heading">
+        <div>
+          <p>TV GUIDE</p>
+          <h2>Classic Episodes</h2>
+        </div>
+
+        <ion-button routerLink="/main/episodes">
+          Ver más
+        </ion-button>
+      </div>
+
+      <div class="episode-list">
+        <article
+          class="episode-item"
+          *ngFor="let episode of Episodes"
+          [routerLink]="['/main/episodes', episode.id]">
+
+          <img
+            [src]="IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + episode.image_path"
+            [alt]="episode.name">
+
+          <div>
+            <span>S{{ episode.season }} - E{{ episode.episode_number }}</span>
+            <h3>{{ episode.name }}</h3>
+            <p>{{ episode.airdate }}</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-panel">
+      <div class="section-heading">
+        <div>
+          <p>MAP</p>
+          <h2>Springfield Places</h2>
+        </div>
+
+        <ion-button routerLink="/main/locations">
+          Ver más
+        </ion-button>
+      </div>
+
+      <div class="location-list">
+        <article class="location-item" *ngFor="let location of Locations">
+          <div>
+            <h3>{{ location.name }}</h3>
+            <p>{{ location.town || 'Springfield' }}</p>
+          </div>
+
+          <img
+            [src]="IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + location.image_path"
+            [alt]="location.name">
+        </article>
+      </div>
+    </section>
+
+  </div>
+</ion-content>

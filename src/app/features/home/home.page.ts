@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import {
   IonContent,
   IonHeader,
@@ -10,7 +11,8 @@ import {
   IonMenuButton,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonButton
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
@@ -42,6 +44,8 @@ imports: [
   IonGrid,
   IonRow,
   IonCol,
+  IonButton,
+  RouterLink,
   HeaderComponent,
   CardComponent
 ]

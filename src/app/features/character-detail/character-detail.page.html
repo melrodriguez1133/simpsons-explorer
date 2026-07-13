@@ -1,0 +1,62 @@
+<app-header title="Character"></app-header>
+
+<ion-content class="app-background" [fullscreen]="true">
+  <div class="page-shell">
+
+  <div class="loading-box" *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading Springfield...</p>
+  </div>
+
+  <section class="detail-panel" *ngIf="!isLoading && character">
+
+    <div class="image-box">
+      <img
+        [src]="IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + character.portrait_path"
+        [alt]="character.name">
+    </div>
+
+    <div class="info-box">
+      <p class="eyebrow">CHARACTER</p>
+      <h1>{{ character.name }}</h1>
+
+      <span class="status">{{ character.status }}</span>
+
+      <div class="info-grid">
+        <div>
+          <strong>Occupation</strong>
+          <p>{{ character.occupation || 'Unknown' }}</p>
+        </div>
+
+        <div>
+          <strong>Gender</strong>
+          <p>{{ character.gender || 'Unknown' }}</p>
+        </div>
+
+        <div>
+          <strong>Age</strong>
+          <p>{{ character.age || 'Unknown' }}</p>
+        </div>
+
+        <div>
+          <strong>Birthdate</strong>
+          <p>{{ character.birthdate || 'Unknown' }}</p>
+        </div>
+      </div>
+
+      <div class="phrases" *ngIf="character.phrases && character.phrases.length">
+        <h2>Famous Phrases</h2>
+
+        <p *ngFor="let phrase of character.phrases">
+          “{{ phrase }}”
+        </p>
+      </div>
+
+      <ion-button routerLink="/main/characters">
+        Volver
+      </ion-button>
+    </div>
+
+  </section>
+  </div>
+</ion-content>

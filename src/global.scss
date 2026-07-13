@@ -35,3 +35,25 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+.app-background {
+  --background: transparent;
+}
+
+.app-background::part(background) {
+  background-color: #5fd4ff;
+  background-image: url("/assets/backgrounds/backgrounds.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.page-shell {
+  padding: 24px;
+}
+
+@media (max-width: 576px) {
+  .page-shell {
+    padding: 16px;
+  }
+}

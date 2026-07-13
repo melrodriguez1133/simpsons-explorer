@@ -1,0 +1,25 @@
+.locations-page {
+  --background: #bdefff;
+}
+
+.locations-page ion-grid {
+  padding: 18px;
+}
+
+.locations-page ion-row {
+  align-items: stretch;
+}
+
+.locations-page ion-col {
+  display: flex;
+  padding: 12px;
+}
+
+.locations-page app-card {
+  width: 100%;
+  display: block;
+}
+
+.locations-page app-card::part(card) {
+  min-height: 360px;
+}

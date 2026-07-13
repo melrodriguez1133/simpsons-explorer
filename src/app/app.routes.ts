@@ -40,7 +40,18 @@ export const routes: Routes = [
         path: 'profile',
         loadComponent: () =>
           import('./features/profile/profile.page').then(m => m.ProfilePage),
-      }
+      },
+      {
+  path: 'characters/:id',
+  loadComponent: () =>
+    import('./features/character-detail/character-detail.page').then(m => m.CharacterDetailPage),
+},
+{
+  path: 'episodes/:id',
+  loadComponent: () =>
+    import('./features/episode-detail/episode-detail.page').then(m => m.EpisodeDetailPage),
+},
     ]
-  }
+  },
+
 ];

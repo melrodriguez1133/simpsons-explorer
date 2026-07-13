@@ -1,9 +1,21 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="simpsons-toolbar">
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>{{ title }} - Simpsons Explorer </ion-title>
+    <ion-title>
+      <div class="header-title">
+        <img
+          src="assets/images/logoS.png"
+          alt="Springfield logo"
+          class="header-logo">
+
+        <div class="header-text">
+          <span>{{ title }}</span>
+          <strong>Simpsons Explorer</strong>
+        </div>
+      </div>
+    </ion-title>
   </ion-toolbar>
 </ion-header>

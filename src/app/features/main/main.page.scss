@@ -1,0 +1,205 @@
+ion-split-pane {
+  --side-width: 285px;
+  --side-max-width: 285px;
+  --border: 0;
+}
+
+.simpsons-menu {
+  --width: 285px;
+  --max-width: 285px;
+}
+
+.menu-content {
+  --background: transparent;
+  background-image: url("/assets/backgrounds/sky-bg.png");
+  background-size: auto 100%;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.menu-shell {
+  min-height: 100%;
+  padding: 22px 14px 34px;
+
+  background: transparent;
+  border-right: 5px solid #111;
+}
+
+/* Logo superior */
+
+.menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 22px;
+  padding: 16px 14px;
+
+  background: #ffd60a;
+  border: 4px solid #111;
+  border-radius: 18px;
+  box-shadow: 7px 7px 0 #111;
+}
+
+.menu-brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(2px 2px 0 #fff);
+}
+
+.menu-brand span {
+  display: block;
+  margin-bottom: 4px;
+
+  color: #e22b1c;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.menu-brand h1 {
+  margin: 0;
+
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 0.95;
+  font-weight: 900;
+  text-shadow: 2px 2px 0 #fff;
+}
+
+/* Panel menú */
+
+.menu-card {
+  padding: 20px 16px 18px;
+
+  background: rgba(237, 235, 39, 0.96);
+  border: 4px solid #111;
+  border-radius: 20px;
+  box-shadow: 7px 7px 0 #111;
+}
+
+.menu-label {
+  margin: 0 6px 8px;
+
+  color: #e22b1c;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.menu-card h2 {
+  margin: 0 6px 18px;
+
+  color: #111;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 21px;
+  line-height: 1.12;
+  font-weight: 900;
+}
+
+ion-list {
+  padding: 0;
+  background: transparent;
+}
+
+/* Items */
+
+.menu-item {
+  --background: #fff;
+  --color: #111;
+  --padding-start: 16px;
+  --inner-padding-end: 14px;
+  --min-height: 54px;
+  --border-radius: 15px;
+
+  margin: 0 0 13px;
+  border: 3px solid #111;
+  border-radius: 15px;
+  box-shadow: 4px 4px 0 #111;
+
+  overflow: hidden;
+}
+
+.menu-item ion-icon {
+  color: #111;
+  font-size: 22px;
+  margin-right: 12px;
+}
+
+.menu-item ion-label {
+  color: #111;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.menu-item:hover {
+  --background: #fff7b0;
+}
+
+.menu-item:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #111;
+}
+
+.menu-item.active-link {
+  --background: #ffd60a;
+}
+
+.menu-item.active-link ion-icon,
+.menu-item.active-link ion-label {
+  color: #111;
+}
+
+ion-menu-toggle:last-child .menu-item {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 420px) {
+  ion-split-pane {
+    --side-width: 275px;
+    --side-max-width: 275px;
+  }
+
+  .simpsons-menu {
+    --width: 275px;
+    --max-width: 275px;
+  }
+
+  .menu-shell {
+    padding: 20px 12px 30px;
+  }
+
+  .menu-brand {
+    padding: 14px 12px;
+  }
+
+  .menu-brand img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .menu-brand h1 {
+    font-size: 18px;
+  }
+
+  .menu-card {
+    padding: 18px 14px 16px;
+  }
+
+  .menu-card h2 {
+    font-size: 20px;
+  }
+
+  .menu-item {
+    --min-height: 52px;
+    margin-bottom: 12px;
+  }
+}

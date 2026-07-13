@@ -21,7 +21,7 @@ import { CharacterResponse } from 'src/app/core/interfaces/character-response.in
 import {CardComponent} from 'src/app/shared/components/card/card.component';
 import {IMAGE_CONSTANTS} from 'src/app/core/constants/image.constants';
 import {ImageSize} from 'src/app/core/enums/image-size.enum';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.page.html',
@@ -41,7 +41,8 @@ import {ImageSize} from 'src/app/core/enums/image-size.enum';
     IonRow,
     IonCol,
     IonImg,
-    CardComponent
+    CardComponent,
+    RouterLink
   ],
 })
 export class CharactersPage implements OnInit {

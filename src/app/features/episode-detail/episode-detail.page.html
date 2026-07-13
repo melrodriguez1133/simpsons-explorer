@@ -1,0 +1,40 @@
+<app-header title="Episode"></app-header>
+
+<ion-content class="app-background" [fullscreen]="true">
+  <div class="page-shell">
+
+  <div class="loading-box" *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading episode...</p>
+  </div>
+
+  <section class="episode-panel" *ngIf="!isLoading && episode">
+
+    <img
+      class="episode-image"
+      [src]="IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + episode.image_path"
+      [alt]="episode.name">
+
+    <div class="episode-info">
+      <p class="eyebrow">TV GUIDE</p>
+      <h1>{{ episode.name }}</h1>
+
+      <div class="episode-meta">
+        <span>Season {{ episode.season }}</span>
+        <span>Episode {{ episode.episode_number }}</span>
+        <span>{{ episode.airdate }}</span>
+      </div>
+
+      <div class="synopsis-box">
+        <h2>Synopsis</h2>
+        <p>{{ episode.synopsis }}</p>
+      </div>
+
+      <ion-button routerLink="/main/episodes">
+        Volver
+      </ion-button>
+    </div>
+
+  </section>
+  </div>
+</ion-content>

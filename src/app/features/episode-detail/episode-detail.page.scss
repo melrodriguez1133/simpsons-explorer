@@ -1,0 +1,114 @@
+.detail-page {
+  --background: #5fd4ff;
+  background-image: url("/assets/backgrounds/backgrounds.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.loading-box,
+.episode-panel {
+  margin: 18px;
+  padding: 18px;
+  background: rgba(237, 235, 39, 0.96);
+  border: 4px solid #111;
+  border-radius: 20px;
+  box-shadow: 8px 8px 0 #111;
+}
+
+.loading-box {
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 900;
+}
+
+.episode-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+  border: 4px solid #111;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 #111;
+  background: #fff;
+}
+
+.episode-info {
+  margin-top: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #e22b1c;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.episode-info h1 {
+  margin: 0;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+  font-weight: 900;
+  text-shadow: 2px 2px 0 #fff;
+}
+
+.episode-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.episode-meta span {
+  padding: 8px 14px;
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.synopsis-box {
+  padding: 16px;
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 16px;
+}
+
+.synopsis-box h2 {
+  margin: 0 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.synopsis-box p {
+  margin: 0;
+  color: #111;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+ion-button {
+  margin-top: 18px;
+  --background: #fff;
+  --color: #111;
+  --border-color: #111;
+  --border-style: solid;
+  --border-width: 3px;
+  --border-radius: 999px;
+  --box-shadow: 4px 4px 0 #111;
+  font-weight: 900;
+}
+
+@media (max-width: 576px) {
+  .episode-info h1 {
+    font-size: 30px;
+  }
+
+  .episode-image {
+    max-height: 280px;
+  }
+}

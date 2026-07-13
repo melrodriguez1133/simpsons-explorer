@@ -1,0 +1,22 @@
+.episodes-page {
+  --background: #bdefff;
+}
+
+.episodes-page ion-grid {
+  padding: 18px;
+}
+
+.episodes-page ion-row {
+  align-items: stretch;
+}
+
+.episodes-page ion-col {
+  display: flex;
+  padding: 12px;
+}
+
+.episodes-page app-card {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

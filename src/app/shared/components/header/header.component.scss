@@ -1,0 +1,74 @@
+ion-header {
+  border-bottom: 4px solid #111;
+}
+
+.simpsons-toolbar {
+  --background: #ffd60a;
+  --color: #111;
+  --min-height: 72px;
+  --border-width: 0;
+}
+
+ion-menu-button {
+  --color: #111;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header-logo {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(2px 2px 0 #fff);
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.05;
+}
+
+.header-text span {
+  color: #e22b1c;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.header-text strong {
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-shadow: 2px 2px 0 #fff;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 420px) {
+  .simpsons-toolbar {
+    --min-height: 64px;
+  }
+
+  .header-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .header-text strong {
+    font-size: 17px;
+  }
+
+  .header-text span {
+    font-size: 11px;
+  }
+}

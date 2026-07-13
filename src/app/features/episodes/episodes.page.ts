@@ -17,6 +17,7 @@ import { EpisodeResponse } from 'src/app/core/interfaces/episode-response.interf
 import {CardComponent} from 'src/app/shared/components/card/card.component';
 import {IMAGE_CONSTANTS} from 'src/app/core/constants/image.constants';
 import {ImageSize} from 'src/app/core/enums/image-size.enum';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes.page.html',
@@ -33,7 +34,8 @@ import {ImageSize} from 'src/app/core/enums/image-size.enum';
     IonGrid,
     IonRow,
     IonCol,
-    CardComponent
+    CardComponent,
+    RouterLink
     
   ]
 })

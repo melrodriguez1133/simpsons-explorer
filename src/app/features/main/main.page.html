@@ -3,43 +3,52 @@
   <ion-menu
     menuId="main-menu"
     contentId="main-content"
-    type="overlay">
+    type="overlay"
+    class="simpsons-menu">
 
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Simpsons Explorer</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <ion-content class="menu-content">
 
-    <ion-content>
+      <div class="menu-shell">
 
-      <ion-list>
+        <div class="menu-brand">
+          <img src="assets/images/logoS.png" alt="Springfield logo">
 
-        <ion-list-header>Menú</ion-list-header>
-        <ion-note>Explora el universo de Los Simpson</ion-note>
+          <div>
+            <span>Springfield</span>
+            <h1>Simpsons Explorer</h1>
+          </div>
+        </div>
 
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+        <div class="menu-card">
+          <p class="menu-label">Menú</p>
+          <h2>Explora Springfield</h2>
 
-          <ion-item
-            [routerLink]="p.url"
-            routerDirection="root"
-            lines="none"
-            detail="false">
+          <ion-list lines="none">
 
-            <ion-icon
-              slot="start"
-              [name]="p.icon">
-            </ion-icon>
+            <ion-menu-toggle auto-hide="true" *ngFor="let p of appPages">
+              <ion-item
+                class="menu-item"
+                [routerLink]="p.url"
+                routerDirection="root"
+                routerLinkActive="active-link"
+                detail="false">
 
-            <ion-label>
-              {{ p.title }}
-            </ion-label>
+                <ion-icon
+                  slot="start"
+                  [name]="p.icon">
+                </ion-icon>
 
-          </ion-item>
+                <ion-label>
+                  {{ p.title }}
+                </ion-label>
 
-        </ion-menu-toggle>
+              </ion-item>
+            </ion-menu-toggle>
 
-      </ion-list>
+          </ion-list>
+        </div>
+
+      </div>
 
     </ion-content>
 
