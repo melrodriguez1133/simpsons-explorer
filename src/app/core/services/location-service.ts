@@ -10,8 +10,8 @@ export class LocationService {
   apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
   //get all locations
-  getAllLocations() {
-    return this.http.get<LocationResponse>(`${this.apiUrl}/locations`);
+  getAllLocations(page: number = 1 ) {
+    return this.http.get<LocationResponse>(`${this.apiUrl}/locations?page=${page}`);
   } 
 //get location by id
   getLocationById(id: number) {

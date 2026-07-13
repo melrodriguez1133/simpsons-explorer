@@ -1,0 +1,31 @@
+<ion-card class="pagination-card">
+
+  <ion-button
+    fill="clear"
+    (click)="previousPage()"
+    [disabled]="currentPage === 1">
+
+    <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+
+  </ion-button>
+
+  <div class="page-info">
+
+    <span>Página</span>
+
+    <h2>{{ currentPage }}</h2>
+
+    <small>de {{ totalPages }}</small>
+
+  </div>
+
+  <ion-button
+    fill="clear"
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages">
+
+    <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+
+  </ion-button>
+
+</ion-card>

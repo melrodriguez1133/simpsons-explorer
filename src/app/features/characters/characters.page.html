@@ -1,6 +1,13 @@
 <app-header title="characters"></app-header>
 
 <ion-content class="app-background" [fullscreen]="true">
+  <app-pagination
+   [currentPage]="currentPage"
+   [totalPages]="totalPages"
+  (pageChange)="loadCharacters($event)"
+>
+ 
+</app-pagination>
   <div class="page-shell">
 
  <ion-grid>
@@ -27,4 +34,14 @@
     </ion-row>
   </ion-grid>
   </div>
+
+<app-pagination
+   [currentPage]="currentPage"
+   [totalPages]="totalPages"
+  (pageChange)="loadCharacters($event)"
+>
+ 
+</app-pagination>
+
+
 </ion-content>

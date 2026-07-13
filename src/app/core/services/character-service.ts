@@ -10,8 +10,8 @@ export class CharacterService {
   private http = inject(HttpClient);
   apiUrl = environment.apiUrl;
 //get all characters
-  getAllCharacters() {
-    return this.http.get<CharacterResponse>(`${this.apiUrl}/characters`);
+  getAllCharacters(page: number = 1) {
+    return this.http.get<CharacterResponse>(`${this.apiUrl}/characters?page=${page}`);
   }
 
   //get character by id

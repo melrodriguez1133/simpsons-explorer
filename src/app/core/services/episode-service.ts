@@ -11,8 +11,8 @@ export class EpisodeService {
   constructor(private http: HttpClient) {}
 
   //get all episodes
-  getAllEpisodes() {
-    return this.http.get<EpisodeResponse>(`${this.apiUrl}/episodes`);
+  getAllEpisodes(page: number = 1) {
+    return this.http.get<EpisodeResponse>(`${this.apiUrl}/episodes?page=${page}`);
   }
 //get episode by id
   getEpisodeById(id: number) {

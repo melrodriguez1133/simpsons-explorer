@@ -8,7 +8,14 @@ import {
   IonToolbar, 
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+   InfiniteScrollCustomEvent,
+  IonAvatar,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonItem,
+  IonLabel,
+  IonList,
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { EpisodeService } from 'src/app/core/services/episode-service';
@@ -35,21 +42,91 @@ import { RouterLink } from '@angular/router';
     IonRow,
     IonCol,
     CardComponent,
-    RouterLink
+    RouterLink,
+  IonAvatar,
+  IonContent,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonItem,
+  IonLabel,
+  IonList,
     
   ]
 })
 export class EpisodesPage implements OnInit {
+  //images
   protected readonly IMAGE_CONSTANTS = IMAGE_CONSTANTS;
   protected readonly ImageSize = ImageSize;
   
   Episodes: Episode[] = [];
-  constructor(private episodeService: EpisodeService) { }
+
+  //scroll infinit
+currentPage = 1;
+totalPages = 1;
+isLoading = false;
+
+constructor(private episodeService: EpisodeService) { }
 
   ngOnInit() {
-    this.episodeService.getAllEpisodes().subscribe((response: EpisodeResponse) => {
-      this.Episodes = response.results;
-      console.log(this.Episodes);
-    });
+    this.loadEpisodes();
+
   }
+  
+  loadEpisodes(page:number = 1):void{
+    this.episodeService.getAllEpisodes(page).subscribe({
+      next:(response)=>{
+        this.Episodes=response.results;
+        this.currentPage = page;
+        this.totalPages=response.pages;
+      }
+    })
+  }
+ 
+  onIonInfinite(event: InfiniteScrollCustomEvent) {
+    //verificar si ya es la ultima pag
+    if (this.currentPage >= this.totalPages) {
+
+    event.target.disabled = true;
+    event.target.complete();
+
+    return;
+   
+  }
+  // Avanzamos a la siguiente página
+  this.currentPage++;
+
+   // Descargamos los nuevos episodios
+  this.episodeService.getAllEpisodes(this.currentPage).subscribe({
+
+    next: (response: EpisodeResponse) => {
+
+      // Agregamos los nuevos episodios sin perder los anteriores
+      this.Episodes = [
+
+        ...this.Episodes,
+
+        ...response.results
+
+      ];
+
+      // Actualizamos el total de páginas
+      this.totalPages = response.pages;
+
+      // Finalizamos el Infinite Scroll
+      event.target.complete();
+
+    },
+
+    error: (error) => {
+
+      console.error(error);
+
+      // Siempre debemos finalizar el evento
+      event.target.complete();
+
+    }
+
+  });
+
+}
 }

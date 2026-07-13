@@ -22,6 +22,7 @@ import {CardComponent} from 'src/app/shared/components/card/card.component';
 import {IMAGE_CONSTANTS} from 'src/app/core/constants/image.constants';
 import {ImageSize} from 'src/app/core/enums/image-size.enum';
 import { RouterLink } from '@angular/router';
+import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.page.html',
@@ -42,21 +43,37 @@ import { RouterLink } from '@angular/router';
     IonCol,
     IonImg,
     CardComponent,
-    RouterLink
+    RouterLink,
+    PaginationComponent
   ],
 })
 export class CharactersPage implements OnInit {
+
+  //Images
   protected readonly IMAGE_CONSTANTS = IMAGE_CONSTANTS;
   protected readonly ImageSize = ImageSize;
   Characters: Character[] = [];
+
+  //Pagination
+  currentPage: number = 1;
+  totalPages: number = 1;       
+  totalCharacters: number = 0;
+
+
   constructor(private characterService: CharacterService) { }
 
   ngOnInit() {
-    this.characterService.getAllCharacters().subscribe((data: CharacterResponse) => {
-      this.Characters = data.results;
-      console.log(this.Characters);
-    });
+    this.loadCharacters(this.currentPage);
   }
-
+  
+  loadCharacters(page: number) {
+    this.characterService.getAllCharacters(page).subscribe((data: CharacterResponse) => {
+      this.Characters = data.results;
+      this.totalPages = data.pages;
+      this.totalCharacters = data.count;
+      console.log(this.Characters);
+      console.log(`Current Page: ${this.currentPage}, Total Pages: ${this.totalPages}, Total Characters: ${this.totalCharacters}`);
+      console.log(data);
+    });
 }
-
+}
