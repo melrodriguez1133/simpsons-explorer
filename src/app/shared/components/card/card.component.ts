@@ -15,8 +15,6 @@ export class CardComponent  implements OnInit {
   @Input() subtitle: string = "";
   @Input() description: string = "";
   @Input() imageUrl: string = "";
-  @Input() age:number = 0;
-  @Input() date: string = "";
   constructor() { }
 
   ngOnInit() {

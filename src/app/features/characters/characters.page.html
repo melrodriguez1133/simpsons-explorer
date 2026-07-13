@@ -3,12 +3,11 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-col size="12" size-md="6" *ngFor="let character of Characters">
+      <ion-col size="12" size-md="6" *ngFor="let character of Characters"> 
         <app-card 
           [title]="character.name" 
           [subtitle]="character.occupation" 
-          [age]="character.age" 
-          [description]="'character.occupation' + ' - ' + 'character.status'"
+          [description]="character.gender"
           [imageUrl]=" IMAGE_CONSTANTS.baseUrl + '/' + ImageSize.MEDIUM + character.portrait_path">
         </app-card>
       </ion-col>
