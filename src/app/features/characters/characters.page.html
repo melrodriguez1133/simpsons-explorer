@@ -1,13 +1,19 @@
 <app-header title="characters"></app-header>
 
 <ion-content class="app-background" [fullscreen]="true">
-  <app-pagination
-   [currentPage]="currentPage"
-   [totalPages]="totalPages"
-  (pageChange)="loadCharacters($event)"
->
- 
-</app-pagination>
+  <ion-searchbar 
+  animated="true" 
+  placeholder="Search Characters"
+  debounce="300"
+  clear-input="true"
+  (ionInput)="onSearch($event)"
+  ></ion-searchbar>
+
+ <ion-text *ngIf="!filteredCharacters.length" color="medium">
+    <p class="ion-text-center">
+      No se encontraron personajes.
+    </p>
+  </ion-text>
   <div class="page-shell">
 
  <ion-grid>
@@ -15,7 +21,7 @@
       <ion-col
         size="6"
         size-md="4"
-        *ngFor="let character of Characters">
+        *ngFor="let character of filteredCharacters">
 
         <div
           class="card-link"
@@ -34,6 +40,8 @@
     </ion-row>
   </ion-grid>
   </div>
+
+ 
 
 <app-pagination
    [currentPage]="currentPage"

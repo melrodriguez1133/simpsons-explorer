@@ -12,7 +12,9 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonImg,                                           
+  IonImg,      
+  IonSearchbar,                                     
+  IonText
 } from '@ionic/angular/standalone';
 import {HeaderComponent} from 'src/app/shared/components/header/header.component';
 import { CharacterService } from 'src/app/core/services/character-service';
@@ -44,7 +46,9 @@ import { PaginationComponent } from 'src/app/shared/components/pagination/pagina
     IonImg,
     CardComponent,
     RouterLink,
-    PaginationComponent
+    PaginationComponent,
+    IonSearchbar,
+    IonText
   ],
 })
 export class CharactersPage implements OnInit {
@@ -54,6 +58,9 @@ export class CharactersPage implements OnInit {
   protected readonly ImageSize = ImageSize;
   Characters: Character[] = [];
 
+  //Filtros
+  filteredCharacters:Character[]=[]
+  searchText: string ='';
   //Pagination
   currentPage: number = 1;
   totalPages: number = 1;       
@@ -69,11 +76,27 @@ export class CharactersPage implements OnInit {
   loadCharacters(page: number) {
     this.characterService.getAllCharacters(page).subscribe((data: CharacterResponse) => {
       this.Characters = data.results;
+      this.filteredCharacters=[...this.Characters];
       this.totalPages = data.pages;
       this.totalCharacters = data.count;
       console.log(this.Characters);
       console.log(`Current Page: ${this.currentPage}, Total Pages: ${this.totalPages}, Total Characters: ${this.totalCharacters}`);
       console.log(data);
     });
+}
+
+onSearch(event:Event){
+  const value = (event.target as HTMLIonSearchbarElement)
+   .value
+   ?.trim()
+   .toLowerCase()??'';
+
+   if(!value){
+    this.filteredCharacters=[...this.Characters];
+    return
+   }
+   this.filteredCharacters=this.Characters.filter(Character => 
+     Character.name.toLowerCase().includes(value)
+   );
 }
 }

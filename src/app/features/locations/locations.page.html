@@ -2,10 +2,16 @@
 
 <ion-content class="app-background" [fullscreen]="true">
   <div class="page-shell">
+<ion-searchbar 
+placeholder="Search Locations"
+ debounce="300"
+  clearInput="true"
+  (ionInput)="onSearch($event)"
+></ion-searchbar>
 
 <ion-grid>
     <ion-row>
-      <ion-col size="6" size-md="4" *ngFor="let location of Locations">
+      <ion-col size="6" size-md="4" *ngFor="let location of paginatedLocations">
         <app-card
           class="location-card"
           [title]="location.name"
@@ -15,5 +21,30 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <div class="pagination">
+
+  <button
+    (click)="previousPage()"
+    [disabled]="currentPage === 1">
+
+    ← Previous
+
+  </button>
+
+  <span>
+
+    {{ currentPage }} / {{ totalPages }}
+
+  </span>
+
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages">
+
+    Next →
+
+  </button>
+
+</div>
   </div>
 </ion-content>

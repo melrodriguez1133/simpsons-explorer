@@ -1,15 +1,31 @@
+<ion-header>
+  <ion-toolbar>
 <app-header title="episodes"></app-header>
-
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar 
+placeholder="Search Episode"
+debounce="300"
+clearInput="true"
+(ionInput)="onSearch($event)"   
+></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="app-background" [fullscreen]="true">
   <div class="page-shell">
 
+  <ion-item *ngIf="!filterEpisodes.length" lines="none">
+    <ion-label class="ion-text-center">
+      No se encontraron episodios.
+    </ion-label>
+  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col
         size="12"
         size-md="6"
         size-lg="4"
-        *ngFor="let episode of Episodes">
+        *ngFor="let episode of filterEpisodes">
 
         <div
           class="card-link"
@@ -32,8 +48,7 @@
   (ionInfinite)="onIonInfinite($event)">
     <ion-infinite-scroll-content
     loadingSpinner="bubbles"
-        loadingText="Cargando más episodios...">>
-      
+        loadingText="Cargando más episodios...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
   </div>

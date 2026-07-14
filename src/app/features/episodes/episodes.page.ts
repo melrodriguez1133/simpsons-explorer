@@ -16,6 +16,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonSearchbar,
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { EpisodeService } from 'src/app/core/services/episode-service';
@@ -50,6 +51,7 @@ import { RouterLink } from '@angular/router';
   IonItem,
   IonLabel,
   IonList,
+  IonSearchbar
     
   ]
 })
@@ -59,7 +61,7 @@ export class EpisodesPage implements OnInit {
   protected readonly ImageSize = ImageSize;
   
   Episodes: Episode[] = [];
-
+  filterEpisodes: Episode []=[];
   //scroll infinit
 currentPage = 1;
 totalPages = 1;
@@ -76,6 +78,7 @@ constructor(private episodeService: EpisodeService) { }
     this.episodeService.getAllEpisodes(page).subscribe({
       next:(response)=>{
         this.Episodes=response.results;
+        this.filterEpisodes=[...this.Episodes];
         this.currentPage = page;
         this.totalPages=response.pages;
       }
@@ -102,12 +105,11 @@ constructor(private episodeService: EpisodeService) { }
 
       // Agregamos los nuevos episodios sin perder los anteriores
       this.Episodes = [
-
         ...this.Episodes,
-
         ...response.results
-
       ];
+
+      this.filterEpisodes=[...this.Episodes];
 
       // Actualizamos el total de páginas
       this.totalPages = response.pages;
@@ -127,6 +129,24 @@ constructor(private episodeService: EpisodeService) { }
     }
 
   });
+
+}
+
+onSearch(event:Event){
+    const value = (event.target as HTMLIonSearchbarElement)
+    .value
+    ?.trim()
+    .toLowerCase() ?? '';
+
+  if (!value) {
+    this.filterEpisodes = [...this.Episodes];
+    return;
+  }
+
+  this.filterEpisodes = this.Episodes.filter(episode =>
+    episode.name.toLowerCase().includes(value)
+  );
+
 
 }
 }
